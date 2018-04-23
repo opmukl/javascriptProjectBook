@@ -1,0 +1,36 @@
+caption {font-size: 32px;}
+table { width: 320px;}
+table, th {background: #333;}
+th {
+  padding-right: 10px;
+  height: 80px;
+}
+td {
+  height: 75px;
+  text-align: center;
+}
+th > input {
+  width: 100%;
+  border: none;
+  background: #333333;
+  color: #fff;
+  text-align: right;
+  font-style: 48px;
+}
+th input[type='text'] {
+  font-size: 36px;
+}
+td >input[type="button"]{
+  width: 100%;
+  height: inherit;
+  color: #333;
+  font-size: 36px;
+  border: none;
+}
+td>input[type="button"]:hover {
+  background: #999999;
+}
+td:last-child > input {
+  background: orange;
+  color: #fff;
+}

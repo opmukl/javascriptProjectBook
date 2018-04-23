@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">
+  <title>Chapter5 - 5.2.1</title>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #bdbdbd;
+    }
+    .active {
+      background: bisque;
+    }
+  </style>
+  <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <section>
+      <h1 id="taskTitle">할 일 목록</h1>
+      <button id="btnAddTask">목록 추가</button>
+      <ul id="taskList">
+        <li>제목1</li>
+        <li>제목2</li>
+        <li>제목3</li>
+        <li>제목4</li> 
+      </ul>
+  </section>
+
+  <script>
+      var taskTitle = document.getElementById('taskTitle');
+      var taskList = document.getElementById('taskList');
+      var li = taskList.getElementsByTagName('li');
+      var btnAddTask = document.getElementById('btnAddTask');
+      
+      taskList.addEventListener('click', taskList);
+
+      function activeItem(e){
+        if(event.target.nodeName == 'LI') {
+          alert();
+          taskTitle.innerHTML = e.target.innerText;
+
+          for(var i=0; i<e.target.parentNode.children.length; i++){
+            e.target.parentNode.children[i].removeAttribute('class');
+          }
+          e.target.setAttribute('class','active');
+        }
+      }
+      btnAddTask.addEventListener('click', function(){
+        var txt = prompt('제목 입력');
+        taskList.innerHTML += '<li>' + txt + '</li>';
+      })
+  </script>
+</body>
+</html>
