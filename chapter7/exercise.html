@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img src="http://placehold.it/200x100/abc?text=img1" alt="" name="img1">
+  <img src="http://placehold.it/200x100/abc?text=img2" alt="" name="img2">
+  <img src="http://placehold.it/200x100/abc?text=img3" alt="" name="img3">
+  <div>
+    <button onclick="changeImg()">change Image</button>
+  </div>
+
+  
+  <script>
+    function changeImg(){
+      var imgSrc = 'http://placehold.it/200x100/abc?text=';
+      var imgNames = [3,2,1];    
+      var imgs = document.getElementsByTagName("img");      
+
+      for(var i = 0; i < imgs.length; i++){      
+        console.log( i );
+        img = imgs[i];
+        img.setAttribute('src', imgSrc + 'img' + imgNames[i] );
+      }
+
+      //var imgNames = [1,32,];
+
+      // var img =null;
+      // var tgSrc ='';
+
+      // var imgNames = imgNames.reverse();
+      // console.log( imgNames );
+
+      // for(var i = 0; i < imgs.length; i++){      
+      //   console.log( i );
+      //   img = imgs[i];
+      //   img.setAttribute('src', imgSrc + 'img' + imgNames[i] );
+      // }
+    }
+  </script>
+</body>
+</html>
