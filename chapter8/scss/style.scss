@@ -1,0 +1,29 @@
+.calender-wrap{
+  width: 350px;
+  background: #333333;
+  text-align: center;
+}
+caption{
+  padding: 10px;
+  color: teal;
+  font-size: 1.5em;
+}
+table, th, td {
+  color: #fff;
+  border: 1px solid #666;
+  border-collapse: collapse;
+}
+th, td {
+  width: 30px;
+  padding: 10px;
+}
+th:first-child, td:first-child {
+  color: tomato;
+}
+button {
+  padding: 10px;
+  border: none;
+  background: none;
+  color:tan;
+}
+
