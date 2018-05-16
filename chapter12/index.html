@@ -22,6 +22,8 @@
           <p class="temp-min"></p>
         </aside>
       </section>
+
+      <img class="loading" src="images/loading.svg" alt="">
   </div>
 
   <script>
@@ -51,7 +53,17 @@
         + country + ' ' + city + ' ' + weatherId + ' ' + '<br>');
 
       var iconUrl = 'http://openweathermap.org/img/w/' + icon;
-      $('body').append('<img src="' + iconUrl + '.png">');
+      
+      // 날씨 정보 표시
+      $('.weather-info .city').html(city + '/' + country);
+      $('.weather-info .icon').html('<img src="' + iconUrl + '.png">');
+      $('.weather-info .weather-id').html(weatherMain);
+      $('.weather-info .temp-min').html(parseInt(tempMin - 273.15) + '&deg;' + ' min');
+      $('.weather-info .temp-max').html(parseInt(tempMax - 273.15) + '&deg;' + ' max');
+      $('.weather-info .temp').html(parseInt(tempMax - 273.15) + '&deg;');
+
+      
+      
     
     });
   </script>
