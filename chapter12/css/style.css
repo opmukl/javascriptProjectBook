@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font-size: 100%;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.weather-info {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #999;
+  background: #eee;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */

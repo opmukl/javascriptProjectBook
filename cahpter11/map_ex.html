@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="inner-con">
+      <h1>CSSLICK</h1>
+      <nav>
+        <span><a href="#">Home</a></span>
+        <span><a href="#">About</a></span>
+        <span><a href="#">Contact Us</a></span>
+      </nav>
+    </header>
+    <main> 
+      <figure class="banner">
+        <div>
+          <h2>Contact us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur.</p>
+        </div>
+      </figure>	
+      
+      <section class="inner-con">
+        <article>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi dolorem quisomnis nam quas sint assumenda id adipisci veritatis totam.</p>
+          <div class="map-area" id="map"><br>&nbsp;지도가 표시될 영역</div>
+        </article>
+        <aside>
+          <form action="">
+            <fieldset>
+              <legend>Send us Email</legend>
+              <div class="form-group">
+                <label for="name">Name</label>	
+                <input type="text" id="name" name="name">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+              </div>
+              <div class="form-group">
+                <label for="msg">Message</label>
+                <textarea name="msg" id="msg" cols="30" rows="8"></textarea>
+              </div>
+              <div class="form-group">
+                <button>SEND</button>
+              </div>
+            </fieldset>
+          </form>
+        </aside>
+      </section>
+
+    </main>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8-F0QvPFVrsW_gGqhaGJKDV4UZRKRBVs&callback=initMap"
+    async defer></script>
+  <script>
+    initMap();
+    
+    function initMap() {
+      // 정보창 생성
+      var infoWindow = new google.maps.InfoWindow({map: map});
+      var myPosition = {lat: 37.498251, lng: 127.034209};
+
+      //  map 생성
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: myPosition,
+        scrollwheel: false,
+        zoom: 15
+      });
+
+      // 마커 생성
+      //  var marker = new google.maps.Marker({
+      //    map: map,
+      //    position: myPosition,
+      //    title: 'gala빌딩'
+      //  })
+
+      // 맵 스타일 객체
+      var styleArray = [
+        {
+          featureType: 'all',
+          stylers: [
+            { saturation: -80 }
+          ]
+        }, {
+          featureType: 'road.arterial',
+          elementType: 'geometry',
+          stylers: [
+            { hue: '#00ffee'},
+            { saturation: 50 }
+          ]
+        }, {
+          featureType: 'poi.business',
+          elementType: 'labels',
+          stylers: [
+            { visibility: 'off'}
+          ]
+        }
+      ]
+
+
+      // 정보창 객체 추가
+      var infoWindow = new google.maps.InfoWindow({map: map});
+
+      // HTML5 위치 정보 요청
+      if(navigator.geolocation){
+        // geolocation을 사용할 수 있는 경우
+        navigator.geolocation.getCurrentPosition(function(position){
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('gala 빌딩입니다.');
+          map.setCenter(pos);
+
+        }, function(){
+          // 연결 실패
+           handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // geolocation을 사용할 수 없는 경우
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+    } // E: initMap()
+
+    // geolocation 오류 처리
+    function handleLocationError(browserHasGeolacation, infoWindow, pos){
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolacation ?
+        '오류 : geolocation 연결 실패' :
+        '오류 : 브라우저에서 geolocation을 지원하지 않음' );
+    }
+  </script>
+ 
+</body>
+</html>
