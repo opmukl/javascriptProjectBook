@@ -6,6 +6,7 @@
 body {
   color: #333;
   font-size: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 p {
@@ -16,17 +17,63 @@ p {
   position: relative;
   width: 100%;
   padding: 10px;
-  border: 1px solid #999;
-  background: #eee;
+  background: #eee url("https://mblogthumb-phinf.pstatic.net/20120801_196/ghj19735_1343786467806cRLzT_JPEG/ci0004_lbe1986.jpg?type=w800") no-repeat;
+  background-size: cover;
   color: #fff;
+  text-align: center;
+}
+
+.weather-info .city {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  font-size: 1.8em;
+}
+
+.weather-info .weather-box {
+  padding: 20px;
+  text-shadow: 1px 1px 1px #999;
+}
+
+.weather-info .figcaption {
+  text-align: left;
+}
+
+.weather-info figure, .weather-info .temp {
+  float: left;
+  width: 33.3333%;
+}
+
+.weather-info figure {
+  text-align: left;
+}
+
+.weather-info figure img {
+  width: 80px;
+}
+
+.weather-info .temp {
+  font-size: 3.4em;
+}
+
+.weather-info aside p {
+  font-size: 1.8em;
+  text-align: right;
 }
 
 .loading {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.loading img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  transform: translate(-50%, -50%);
 }
 /*# sourceMappingURL=style.css.map */
