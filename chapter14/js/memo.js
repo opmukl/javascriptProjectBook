@@ -48,38 +48,40 @@ $(function(){
 
       // 메모 저장 메서드
       save : function(currentMemo){
-        var savedText = localStorage.length, // 저장된 글 수
-            writingText = currentMemo.val(); // 작성 중인 글 
+        var savedMemoLength = localStorage.length,
+            writingMemoText = currentMemo.val();
         
         // 작성된 글이 있으면 저장
-        if(writingText !== ''){
-          var key = prompt('저장할 파일명?', '');
-          localStorage.setItem(key, writingText);
+        if(savedMemoLength !== 0){
+          var key = prompt('저장할 파일명?', ' ');
+          localStorage.setItem(key, writingMemoText);
+        } else {
+          alert('내용을 입력해주세요.')
         }
       },
 
       // 메모 목록 및 읽기 메서드
-      get : function listStorage(currentMemo){
-        var key,
-          localStorageLength = localStorage.length, // 총 스토리지 길이
-          deleteIcon = '<i class="btn-del-storage fa fa-trash"></i>'; // 삭제 아이콘
+      get : function(currentMemo){
+        var textCotents,
+            savedMemoLength = localStorage.length, // 총 스토리지 길이
+            deleteIcon = '<i class="btn-del-storage fa fa-trash"></i>'; // 삭제 아이콘
       
           currentMemo.find('ul').empty();
           currentMemo.toggleClass('is-active');
           
-          for(var i = 0; i < localStorageLength; i++){
-            key = localStorage.key(i);
-            currentMemo.find('ul').append('<li>' + key + deleteIcon + '</li>');
+          for(var i = 0; i < savedMemoLength; i++){
+            textCotents = localStorage.key(i);
+            currentMemo.find('ul').append('<li>' + textCotents + deleteIcon + '</li>');
           }
 
           // 목록 클릭 시 메모 읽어 오기
           currentMemo.find('li').click(function(){
-            var getData = $(this).text();
-            var txt = localStorage.getItem(getData);
-            console.log(txt);
+            var selectdMemoName = $(this).text();
+            var selectdMemoText = localStorage.getItem(selectdMemoName);
+            console.log(selectdMemoText);
 
             currentMemo.toggleClass('is-active');
-            currentMemo.prev('.txt').val(txt);
+            currentMemo.prev('.txt').val(selectdMemoText);
           });
 
           // 목록 삭제 버튼
@@ -87,9 +89,7 @@ $(function(){
             var key = $(this).parent().text();
             var delConfirm = confirm('해당 메모를 삭제할까요?');
 
-            if(delConfirm) {
-              localStorage.removeItem(key);
-            }
+            if(delConfirm) localStorage.removeItem(key);
           })
 
         }
@@ -102,7 +102,7 @@ $(function(){
 
     // 저장 버튼
     $stickyWrap.on('click', '.btn-save', function(){
-      var currentMemo = $(this).parent().siblings('.txt'); 
+      var currentMemo = $(this).parents().siblings('.txt'); 
       Sticky.save(currentMemo);
     });
 
@@ -124,7 +124,7 @@ $(function(){
 
     // 터치 입력
     $stickyWrap.on('touchstart mousedown', '.sticky', function(){
-      $('sticky').css('zIndex', '0');
+      $('.sticky').css('zIndex', '0');
       $(this).css('zIndex', '99');
     })
     $stickyWrap.on('touchmove', '.top-nav', function(e){
